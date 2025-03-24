@@ -17,6 +17,7 @@
 - [ ] Create Landing Page
 - [ ] Create Nav bar
 - [ ] Create User profile page
+- [ ] Routes, controllers folder in api
 - [ ] Users CRUD
 - [ ] Payments
 - [x] Fix styling of Login, Dashboard
