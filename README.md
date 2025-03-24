@@ -6,9 +6,9 @@
 
 ## Features
 - [ ] Landing Page
-- [ ] List of Subscriptions (Dashboard)
-- [ ] Payment Due Date
+- [ ] Subscriptions Dashboard
 - [ ] Active, Past Due, Cancelled
+- [ ] Payment Due Date
 - [ ] Manage Subscriptions (Pay or Cancel)
 - [ ] Payments (Stripe)
 
@@ -20,8 +20,9 @@
 - [ ] Payments
 
 ## DONE 2 Mar 2025
-- [ ] Edit App for landing page
 - [x] Created index.js for express backend
+- [x] Added mongoose and Subscriptions schema
+- [ ] Adds Login, Dashboard pages
 
 ## Time Limit
 - 1 Month (until 24 Apr)
