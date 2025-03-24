@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tailwindcss/utilities" layer(utilities);
 
 @layer base {
   body {
@@ -37,7 +38,7 @@
 
 @layer utilities {
   .modal-overlay {
-    @apply fixed inset-0 bg-black bg-opacity-50 z-40;
+    @apply fixed inset-0 bg-black z-40;
   }
 
   .modal-container {
