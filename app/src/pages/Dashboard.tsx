@@ -8,6 +8,7 @@ import { Subscription } from '../types'
 const Dashboard = () => {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([])
   const [editingSubscription, setEditingSubscription] = useState<Subscription | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const userId = '1' // In a real app, this would come from auth
 
   useEffect(() => {
@@ -56,22 +57,36 @@ const Dashboard = () => {
     }
   }
 
+  const handleOpenModal = (subscription?: Subscription) => {
+    if (subscription) {
+      setEditingSubscription(subscription)
+    }
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setEditingSubscription(null)
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Subscription Tracker</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Subscription Manager</h1>
+          <button
+            onClick={() => handleOpenModal()}
+            className="btn-primary"
+          >
+            Add Subscription
+          </button>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <SubscriptionForm 
-              onAdd={handleAddSubscription}
-              onUpdate={handleUpdateSubscription}
-              editingSubscription={editingSubscription}
-              setEditingSubscription={setEditingSubscription}
-            />
             <SubscriptionList 
               subscriptions={subscriptions}
-              onEdit={setEditingSubscription}
+              onEdit={handleOpenModal}
               onDelete={handleDeleteSubscription}
             />
           </div>
@@ -79,6 +94,39 @@ const Dashboard = () => {
             <SubscriptionSummary subscriptions={subscriptions} />
           </div>
         </div>
+
+        {/* Modal */}
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-semibold">
+                  {editingSubscription ? 'Edit' : 'Add'} Subscription
+                </h2>
+                <button
+                  onClick={handleCloseModal}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <SubscriptionForm 
+                onAdd={async (data) => {
+                  await handleAddSubscription(data)
+                  handleCloseModal()
+                }}
+                onUpdate={async (id, data) => {
+                  await handleUpdateSubscription(id, data)
+                  handleCloseModal()
+                }}
+                editingSubscription={editingSubscription}
+                setEditingSubscription={setEditingSubscription}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

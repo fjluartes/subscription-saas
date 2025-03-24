@@ -13,12 +13,13 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Fix styling of Login, Dashboard
-- [ ] Fix Subs Dashboard
 - [ ] Create Sign up/Sign out
 - [ ] Create Landing Page
+- [ ] Create Nav bar
+- [ ] Create User profile page
 - [ ] Users CRUD
 - [ ] Payments
+- [x] Fix styling of Login, Dashboard
 - [x] Create Subscriptions Dashboard
 
 ## DONE 24 Mar 2025
