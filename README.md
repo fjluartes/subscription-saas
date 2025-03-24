@@ -13,16 +13,19 @@
 - [ ] Payments (Stripe)
 
 ## TODO
+- [ ] Fix styling of Login, Dashboard
+- [ ] Fix Subs Dashboard
+- [ ] Create Sign up/Sign out
 - [ ] Create Landing Page
-- [ ] Create Dashboard
-- [ ] Create Sign in/Sign out
-- [ ] Users and Subscription CRUD
+- [ ] Users CRUD
 - [ ] Payments
+- [x] Create Subscriptions Dashboard
 
-## DONE 2 Mar 2025
+## DONE 24 Mar 2025
 - [x] Created index.js for express backend
 - [x] Added mongoose and Subscriptions CRUD
-- [ ] Adds Login, Dashboard pages
+- [x] Adds Login, Dashboard pages
+- [x] Adds Subscriptions components in app
 
 ## Time Limit
-- 1 Month (until 24 Apr)
+- 1 Month (until 26 Apr)
