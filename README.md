@@ -21,7 +21,7 @@
 
 ## DONE 2 Mar 2025
 - [x] Created index.js for express backend
-- [x] Added mongoose and Subscriptions schema
+- [x] Added mongoose and Subscriptions CRUD
 - [ ] Adds Login, Dashboard pages
 
 ## Time Limit
