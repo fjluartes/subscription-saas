@@ -3,13 +3,17 @@ import axios from 'axios'
 import SubscriptionForm from '../components/SubscriptionForm'
 import SubscriptionList from '../components/SubscriptionList'
 import SubscriptionSummary from '../components/SubscriptionSummary'
+import Navbar from '../components/NavBar'
 import { Subscription } from '../types'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([])
   const [editingSubscription, setEditingSubscription] = useState<Subscription | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const userId = '1' // In a real app, this would come from auth
+  const userEmail = 'user@example.com'
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSubscriptions()
@@ -69,9 +73,16 @@ const Dashboard = () => {
     setEditingSubscription(null)
   }
 
+  const handleSignOut = () => {
+    // In a real app, this would sign the user out and redirect to the login page
+    console.log('User signed out')
+    navigate('/login')
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100">
+      <Navbar onSignOut={handleSignOut} userEmail={userEmail} />
+      <div className="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">Subscription Tracker</h1>
           <button
