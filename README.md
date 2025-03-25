@@ -5,8 +5,8 @@
 - Deployment: AWS/Heroku/DO
 
 ## Features
-- [ ] Landing Page
-- [ ] Subscriptions Dashboard
+- [x] Landing Page
+- [x] Subscriptions Dashboard
 - [ ] Active, Past Due, Cancelled
 - [ ] Payment Due Date
 - [ ] Manage Subscriptions (Pay or Cancel)
@@ -14,7 +14,6 @@
 
 ## TODO
 - [ ] Create Sign up/Sign out
-- [ ] Create Landing Page
 - [ ] Create Nav bar
 - [ ] Create User profile page
 - [ ] Routes, controllers folder in api
@@ -22,6 +21,10 @@
 - [ ] Payments
 - [x] Fix styling of Login, Dashboard
 - [x] Create Subscriptions Dashboard
+- [x] Create Landing Page
+
+## DONE 25 Mar 2025
+- [x] Created Landing Page
 
 ## DONE 24 Mar 2025
 - [x] Created index.js for express backend
