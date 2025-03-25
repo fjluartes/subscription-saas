@@ -3,7 +3,7 @@ import axios from 'axios'
 import SubscriptionForm from '../components/SubscriptionForm'
 import SubscriptionList from '../components/SubscriptionList'
 import SubscriptionSummary from '../components/SubscriptionSummary'
-import Navbar from '../components/NavBar'
+import Navbar from '../components/Navbar'
 import { Subscription } from '../types'
 import { useNavigate } from 'react-router-dom'
 
