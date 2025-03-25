@@ -79,7 +79,7 @@ const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
                       onSignOut()
                       setShowDropdown(false)
                     }}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
                   >
                     <FaSignOutAlt className="mr-2" />
                     Sign out
