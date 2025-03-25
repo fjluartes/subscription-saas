@@ -13,8 +13,7 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Create Sign up/Sign out
-- [ ] Create Nav bar
+- [ ] Create Sign up page
 - [ ] Create User profile page
 - [ ] Routes, controllers folder in api
 - [ ] Users CRUD
@@ -25,6 +24,7 @@
 
 ## DONE 25 Mar 2025
 - [x] Created Landing Page
+- [x] Create Nav bar, sign out
 
 ## DONE 24 Mar 2025
 - [x] Created index.js for express backend
