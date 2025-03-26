@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import subscriptionRoutes from './routes/subscription.routes'
+import userRoutes from './routes/user.routes'
 
 export const app = express()
 
@@ -10,6 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 // Routes
+app.use('/api/users', userRoutes)
 app.use('/api/subscriptions', subscriptionRoutes)
 
 // MongoDB Connection

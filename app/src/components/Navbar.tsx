@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom'
-import { FaUserCircle, FaSignOutAlt, FaBell, FaQuestionCircle } from 'react-icons/fa'
-import { useState } from 'react'
+import { Link } from "react-router-dom";
+import {
+  FaUserCircle,
+  FaSignOutAlt,
+  FaBell,
+  FaQuestionCircle,
+} from "react-icons/fa";
+import { useState } from "react";
 
 interface NavbarProps {
-  onSignOut: () => void
-  userEmail?: string
+  onSignOut: () => void;
+  userEmail?: string;
 }
 
 const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
-  const [showDropdown, setShowDropdown] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <nav className="bg-white border-b border-gray-200 fixed w-full z-10">
@@ -76,8 +81,8 @@ const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
                   </Link>
                   <button
                     onClick={() => {
-                      onSignOut()
-                      setShowDropdown(false)
+                      onSignOut();
+                      setShowDropdown(false);
                     }}
                     className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
                   >
@@ -91,7 +96,7 @@ const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

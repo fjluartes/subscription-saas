@@ -1,9 +1,9 @@
 # Subscription SaaS
+## SubTrack
 
-- "SubTrack"
-- Subscription Manager SaaS app
+- Subscription Tracker SaaS app
 - Made with Vite + React, Express.js and MongoDB
-- Deployment: AWS/Heroku/DO
+- Deployment: AWS/Heroku
 
 ## Features
 - [x] Landing Page
@@ -15,10 +15,13 @@
 
 ## TODO
 - [ ] Create Sign up page
-- [ ] Create User profile page
-- [ ] Users CRUD
-- [ ] Payments
 - [ ] Authentication
+- [ ] Payments
+- [ ] Manage Subscription
+
+# DONE 26 Mar 2025
+- [x] Created Profile page
+- [x] Created User CRUD in api
 
 ## DONE 25 Mar 2025
 - [x] Created Landing Page
@@ -33,4 +36,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 3 weeks (until 15 Apr)
+- 3 weeks (until 13 Apr)
