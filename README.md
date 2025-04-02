@@ -19,7 +19,7 @@
 - [ ] Payments
 - [ ] Manage Subscription
 
-# DONE 2 Apr 2025
+# DONE 3 Apr 2025
 - [ ] Add user in signup
 - [ ] Fix auth in frontend
 
