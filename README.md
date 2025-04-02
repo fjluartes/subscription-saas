@@ -19,6 +19,10 @@
 - [ ] Payments
 - [ ] Manage Subscription
 
+# DONE 2 Apr 2025
+- [ ] Add user in signup
+- [ ] Fix auth in frontend
+
 # DONE 26 Mar 2025
 - [x] Created Profile page
 - [x] Created User CRUD in api
@@ -36,4 +40,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 3 weeks (until 13 Apr)
+- 3 weeks (until 19 Apr)
