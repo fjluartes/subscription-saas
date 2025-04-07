@@ -24,7 +24,6 @@
 - [x] Redirect to Dashboard after login
 - [x] Change SignUp page to save user
 - [ ] Profile page
-- [ ] Protected pages in app
 
 # DONE 26 Mar 2025
 - [x] Created Profile page
