@@ -23,7 +23,8 @@
 
 # DONE 7 Apr 2025
 - [x] Redirect to Dashboard after login
-- [ ] Add user in Signup page
+- [x] Change SignUp page to save user
+- [ ] Profile page
 
 # DONE 26 Mar 2025
 - [x] Created Profile page
