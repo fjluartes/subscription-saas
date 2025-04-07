@@ -20,7 +20,7 @@ const Login = () => {
 
       // In a real app, you would authenticate here
       console.log("Login submitted:", { email, password });
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       setError("Invalid email or password");
       console.log(err);

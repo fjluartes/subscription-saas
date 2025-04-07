@@ -22,8 +22,8 @@
 - [ ] Manage Subscription
 
 # DONE 7 Apr 2025
+- [x] Redirect to Dashboard after login
 - [ ] Add user in Signup page
-- [ ] Redirect to Dashboard after login
 
 # DONE 26 Mar 2025
 - [x] Created Profile page
