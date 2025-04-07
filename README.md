@@ -14,17 +14,17 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Add user in Signup page
-- [ ] Redirect to Dashboard after login
 - [ ] Protected pages in app
-- [ ] Authentication
-- [ ] Payments
-- [ ] Manage Subscription
+- [ ] Payments CRUD
+- [ ] Manage Subscription (Pay/Cancel)
+- [ ] Add Active, Past Due, Cancelled status
+- [ ] Payment Due Date
 
 # DONE 7 Apr 2025
 - [x] Redirect to Dashboard after login
 - [x] Change SignUp page to save user
 - [ ] Profile page
+- [ ] Protected pages in app
 
 # DONE 26 Mar 2025
 - [x] Created Profile page
