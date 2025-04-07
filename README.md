@@ -14,6 +14,8 @@
 - [ ] Payments (Stripe)
 
 ## TODO
+- [ ] Local storage both sign in/sign out
+- [ ] Add navbar in Profile page
 - [ ] Protected pages in app
 - [ ] Payments CRUD
 - [ ] Manage Subscription (Pay/Cancel)
@@ -23,7 +25,7 @@
 # DONE 7 Apr 2025
 - [x] Redirect to Dashboard after login
 - [x] Change SignUp page to save user
-- [ ] Profile page
+- [x] Profile page
 
 # DONE 26 Mar 2025
 - [x] Created Profile page

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaUserCircle,
   FaSignOutAlt,
@@ -14,6 +14,7 @@ interface NavbarProps {
 
 const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="bg-white border-b border-gray-200 fixed w-full z-10">
@@ -68,7 +69,10 @@ const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
                   <Link
                     to="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => setShowDropdown(false)}
+                    onClick={() => {
+                      navigate("/profile");
+                      setShowDropdown(false);
+                    }}
                   >
                     Your Profile
                   </Link>
