@@ -20,8 +20,9 @@
 - [ ] Manage Subscription
 
 # DONE 7 Apr 2025
-- [ ] Add user in signup
-- [ ] Fix auth in frontend
+- [ ] Add user in Signup page
+- [ ] Redirect to Dashboard after login
+- [ ] Protected pages in app
 
 # DONE 26 Mar 2025
 - [x] Created Profile page
