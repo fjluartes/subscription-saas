@@ -44,4 +44,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 1 month (until 26 Apr)
+- 1 month (until 30 Apr)
