@@ -22,6 +22,10 @@
 - [ ] Add Active, Past Due, Cancelled status
 - [ ] Show Payment Due Date
 
+# DONE 15 Apr 2025
+- [x] Edits Login (hide password)
+- [ ] Adds local storage upon login
+
 # DONE 7 Apr 2025
 - [x] Redirect to Dashboard after login
 - [x] Change SignUp page to save user

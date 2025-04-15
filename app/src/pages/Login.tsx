@@ -19,7 +19,7 @@ const Login = () => {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // In a real app, you would authenticate here
-      console.log("Login submitted:", { email, password });
+      // console.log("Login submitted:", { email, password });
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid email or password");
