@@ -22,9 +22,14 @@
 - [ ] Add Active, Past Due, Cancelled status
 - [ ] Show Payment Due Date
 
+# DONE 16 Apr 2025
+- [ ] Delete local storage on logout
+- [ ] Show name and email on dropdown
+- [ ] Navbar in Profile page
+
 # DONE 15 Apr 2025
 - [x] Edits Login (hide password)
-- [ ] Adds local storage upon login
+- [x] Adds local storage upon login
 
 # DONE 7 Apr 2025
 - [x] Redirect to Dashboard after login

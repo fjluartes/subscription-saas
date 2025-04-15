@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 import subscriptionRoutes from './routes/subscription.routes'
 import userRoutes from './routes/user.routes'
@@ -7,8 +8,11 @@ import userRoutes from './routes/user.routes'
 export const app = express()
 
 // Middleware
-app.use(cors())
+app.use(cors({
+  origin: process.env.APP_URL || 'http://localhost:5173'
+}))
 app.use(express.json())
+app.use(cookieParser());
 
 // Routes
 app.use('/api/users', userRoutes)

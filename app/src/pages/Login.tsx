@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -15,11 +17,24 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await axios.post(`${import.meta.env.VITE_API_URL_DEV}/users/login`, {
+        email: email,
+        password: password,
+      });
 
-      // In a real app, you would authenticate here
-      // console.log("Login submitted:", { email, password });
+      if (rememberMe) {
+        localStorage.setItem('token', response.data.token);
+      } else {
+        localStorage.setItem('token', response.data.token);
+      }
+
+      const userData = {
+        id: response.data._id,
+        name: response.data.name,
+        email: response.data.email
+      };
+      localStorage.setItem('user', JSON.stringify(userData));
+
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid email or password");
@@ -140,6 +155,8 @@ const Login = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded cursor-pointer"
                 />
                 <label
