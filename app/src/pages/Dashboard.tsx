@@ -85,8 +85,8 @@ const Dashboard = () => {
   };
 
   const handleSignOut = () => {
-    // TODO: delete token and user in localStorage
-    console.log("User signed out");
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 

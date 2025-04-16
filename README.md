@@ -23,9 +23,9 @@
 - [ ] Show Payment Due Date
 
 # DONE 16 Apr 2025
-- [ ] Delete local storage on logout
-- [ ] Show name and email on dropdown
+- [x] Delete local storage on logout
 - [ ] Navbar in Profile page
+- [ ] Show name and email on dropdown
 
 # DONE 15 Apr 2025
 - [x] Edits Login (hide password)
