@@ -25,6 +25,7 @@
 - [x] Delete local storage on logout
 - [x] Show name and email on dropdown
 - [x] Navbar in Profile page
+- [x] Edits Login page formData
 
 # DONE 15 Apr 2025
 - [x] Edits Login (hide password)
