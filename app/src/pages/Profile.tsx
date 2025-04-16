@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { FaUser, FaEnvelope, FaSave, FaTimes, FaLock, FaEdit, FaTrash } from 'react-icons/fa'
+import Navbar from '../components/Navbar'
 
 interface UserData {
   _id: string
@@ -24,6 +25,8 @@ const Profile = () => {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const userDetails = JSON.parse(localStorage.getItem("user") || "");
+  const userEmail = userDetails.email;
   const navigate = useNavigate()
 
   // Fetch user data on component mount
@@ -156,6 +159,12 @@ const Profile = () => {
     }
   }
 
+  const handleSignOut = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   if (!user) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -168,8 +177,9 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gray-100">
+      <Navbar onSignOut={handleSignOut} userEmail={userEmail} />
+      <div className="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow rounded-lg overflow-hidden">
           {/* Profile Header */}
           <div className="bg-blue-600 px-6 py-8 sm:px-10 sm:py-12">

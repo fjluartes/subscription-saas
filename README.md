@@ -14,9 +14,8 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Local storage both sign in/sign out
-- [ ] Add navbar in Profile page
 - [ ] Protected pages in app
+- [ ] Saved subscriptions per user
 - [ ] Payments CRUD
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Add Active, Past Due, Cancelled status
@@ -25,7 +24,7 @@
 # DONE 16 Apr 2025
 - [x] Delete local storage on logout
 - [x] Show name and email on dropdown
-- [ ] Navbar in Profile page
+- [x] Navbar in Profile page
 
 # DONE 15 Apr 2025
 - [x] Edits Login (hide password)
