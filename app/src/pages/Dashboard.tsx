@@ -85,7 +85,7 @@ const Dashboard = () => {
   };
 
   const handleSignOut = () => {
-    // In a real app, this would sign the user out and redirect to the login page
+    // TODO: delete token and user in localStorage
     console.log("User signed out");
     navigate("/login");
   };
