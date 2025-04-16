@@ -12,8 +12,9 @@ const Dashboard = () => {
   const [editingSubscription, setEditingSubscription] =
     useState<Subscription | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const userId = "1"; // In a real app, this would come from auth
-  const userEmail = "user@example.com";
+  const userDetails = JSON.parse(localStorage.getItem("user") || "");
+  const userId = userDetails.id;
+  const userEmail = userDetails.email;
   const navigate = useNavigate();
 
   useEffect(() => {

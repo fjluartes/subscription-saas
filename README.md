@@ -24,8 +24,8 @@
 
 # DONE 16 Apr 2025
 - [x] Delete local storage on logout
+- [x] Show name and email on dropdown
 - [ ] Navbar in Profile page
-- [ ] Show name and email on dropdown
 
 # DONE 15 Apr 2025
 - [x] Edits Login (hide password)
