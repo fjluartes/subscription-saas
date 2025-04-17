@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchSubscriptions();
-  }, []);
+  });
 
   const fetchSubscriptions = async () => {
     try {
