@@ -21,11 +21,13 @@
 - [ ] Add Active, Past Due, Cancelled status
 - [ ] Show Payment Due Date
 
+# DONE 18 Apr 2025
+- [ ] Saved subscriptions per user
+
 # DONE 17 Apr 2025
 - [x] Adds signout in navbar
 - [x] Edits user controller/route for logout, cookie
 - [x] Protected pages in app
-- [ ] Saved subscriptions per user
 
 # DONE 16 Apr 2025
 - [x] Delete local storage on logout
