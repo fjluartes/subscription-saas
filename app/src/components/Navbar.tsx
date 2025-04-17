@@ -8,13 +8,18 @@ import {
 import { useState } from "react";
 
 interface NavbarProps {
-  onSignOut: () => void;
   userEmail?: string;
 }
 
-const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
+const Navbar = ({ userEmail }: NavbarProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 fixed w-full z-10">
@@ -85,7 +90,7 @@ const Navbar = ({ onSignOut, userEmail }: NavbarProps) => {
                   </Link>
                   <button
                     onClick={() => {
-                      onSignOut();
+                      handleSignOut();
                       setShowDropdown(false);
                     }}
                     className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"

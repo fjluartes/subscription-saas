@@ -7,10 +7,19 @@ interface AuthRequest extends Request {
 }
 
 // Helper function to generate JWT
-const generateToken = (id: string) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET!, {
+const generateTokenAndSetCookie = (res: Response, id: string) => {
+  const token = jwt.sign({ id }, process.env.JWT_SECRET!, {
     expiresIn: '30d'
-  })
+  });
+
+  res.cookie('jwt', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV !== "development",
+    sameSite: "strict",
+    maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+  });
+
+  return token;
 }
 
 // @desc    Register a new user
@@ -26,12 +35,13 @@ export const registerUser = async (req: Request, res: Response) => {
     }
 
     const user = await User.create({ name, email, password })
+    const token = generateTokenAndSetCookie(res, user._id.toString())
 
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      token: generateToken(user._id.toString())
+      token: token,
     })
   } catch (error) {
     res.status(500).json({ message: 'Server error' })
@@ -48,11 +58,13 @@ export const authUser = async (req: Request, res: Response) => {
     const user = await User.findOne({ email })
     
     if (user && (await user.comparePassword(password))) {
+      const token = generateTokenAndSetCookie(res, user._id.toString())
+
       res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
-        token: generateToken(user._id.toString())
+        token: token,
       })
     } else {
       res.status(401).json({ message: 'Invalid email or password' })
@@ -89,6 +101,7 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
     if (user) {
       user.name = req.body.name || user.name
       user.email = req.body.email || user.email
+      const token = generateTokenAndSetCookie(res, user._id.toString())
       
       if (req.body.password) {
         user.password = req.body.password
@@ -100,7 +113,7 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
         _id: updatedUser._id,
         name: updatedUser.name,
         email: updatedUser.email,
-        token: generateToken(updatedUser._id.toString())
+        token: token
       })
     } else {
       res.status(404).json({ message: 'User not found' })
@@ -126,4 +139,15 @@ export const deleteUser = async (req: AuthRequest, res: Response) => {
   } catch (error) {
     res.status(500).json({ message: 'Server error' })
   }
+}
+
+// @desc    Logout user / clear cookie
+// @route   POST /api/users/logout
+// @access  Private
+export const logoutUser = async (req: Request, res: Response) => {
+  res.cookie('jwt', '', {
+    httpOnly: true,
+    expires: new Date(0)
+  })
+  res.status(200).json({ message: 'Logged out successfully' })
 }

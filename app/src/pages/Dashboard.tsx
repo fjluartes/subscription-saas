@@ -5,7 +5,6 @@ import SubscriptionList from "../components/SubscriptionList";
 import SubscriptionSummary from "../components/SubscriptionSummary";
 import Navbar from "../components/Navbar";
 import { Subscription } from "../types";
-import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
@@ -15,7 +14,6 @@ const Dashboard = () => {
   const userDetails = JSON.parse(localStorage.getItem("user") || "");
   const userId = userDetails.id;
   const userEmail = userDetails.email;
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSubscriptions();
@@ -85,15 +83,9 @@ const Dashboard = () => {
     setEditingSubscription(null);
   };
 
-  const handleSignOut = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   return (
     <div className="min-h-screen bg-gray-100">
-      <Navbar onSignOut={handleSignOut} userEmail={userEmail} />
+      <Navbar userEmail={userEmail} />
       <div className="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900">

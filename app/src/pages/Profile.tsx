@@ -159,12 +159,6 @@ const Profile = () => {
     }
   }
 
-  const handleSignOut = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
   if (!user) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -178,7 +172,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <Navbar onSignOut={handleSignOut} userEmail={userEmail} />
+      <Navbar userEmail={userEmail} />
       <div className="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white shadow rounded-lg overflow-hidden">
           {/* Profile Header */}

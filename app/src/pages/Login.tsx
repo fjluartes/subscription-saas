@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
@@ -29,12 +30,14 @@ const Login = () => {
       const response = await axios.post(`${import.meta.env.VITE_API_URL_DEV}/users/login`, {
         email: formData.email,
         password: formData.password,
+      }, {
+        withCredentials: true,
       });
 
       if (rememberMe) {
         localStorage.setItem('token', response.data.token);
       } else {
-        localStorage.setItem('token', response.data.token);
+        sessionStorage.setItem('token', response.data.token);
       }
 
       const userData = {
@@ -45,8 +48,8 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(userData));
 
       navigate("/dashboard");
-    } catch (err) {
-      setError("Invalid email or password");
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Login failed. Please try again.");
       console.log(err);
     } finally {
       setIsLoading(false);
