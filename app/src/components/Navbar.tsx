@@ -17,6 +17,7 @@ const Navbar = ({ userEmail }: NavbarProps) => {
 
   const handleSignOut = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     sessionStorage.removeItem("token");
     navigate("/login");
   };

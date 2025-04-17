@@ -14,20 +14,21 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Protected pages in app
-- [ ] Saved subscriptions per user
-- [ ] Payments CRUD
-- [ ] Manage Subscription (Pay/Cancel)
-- [ ] Add Active, Past Due, Cancelled status
 - [ ] Show Payment Due Date
+- [ ] Add Active, Past Due, Cancelled status
+- [ ] Manage Subscription (Pay/Cancel)
+- [ ] Payments CRUD
 
 # DONE 18 Apr 2025
-- [ ] Saved subscriptions per user
+- [ ] Add Due Date for subscription
+- [ ] Active/Past Due/Cancelled
+- [ ] Payments CRUD
 
 # DONE 17 Apr 2025
 - [x] Adds signout in navbar
 - [x] Edits user controller/route for logout, cookie
 - [x] Protected pages in app
+- [x] Saved subscriptions per user
 
 # DONE 16 Apr 2025
 - [x] Delete local storage on logout

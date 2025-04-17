@@ -22,7 +22,7 @@ const Dashboard = () => {
   const fetchSubscriptions = async () => {
     try {
       const response = await axios.get<Subscription[]>(
-        `${import.meta.env.VITE_API_URL_DEV}/subscriptions`
+        `${import.meta.env.VITE_API_URL_DEV}/subscriptions/${userId}`
       );
       setSubscriptions(response.data);
     } catch (error) {
@@ -36,7 +36,7 @@ const Dashboard = () => {
     try {
       await axios.post(`${import.meta.env.VITE_API_URL_DEV}/subscriptions`, {
         ...subscription,
-        userId,
+        userId: userId,
       });
       fetchSubscriptions();
     } catch (error) {

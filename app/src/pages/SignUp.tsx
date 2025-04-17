@@ -80,8 +80,8 @@ const SignUp = () => {
       // Handle successful registration
       setSuccess('Account created successfully! Redirecting...');
       
-      // Store the token in localStorage
-      localStorage.setItem('token', response.data.token);
+      // Store the token in sessionStorage and user in localStorage
+      sessionStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify({
         name: response.data.name,
         email: response.data.email
@@ -89,7 +89,7 @@ const SignUp = () => {
 
       // Redirect to dashboard after 2 seconds
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/login');
       }, 2000);
 
     } catch (err: any) {
