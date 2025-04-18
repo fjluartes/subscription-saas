@@ -1,4 +1,5 @@
 import { SubscriptionListProps } from '../types'
+import { format } from 'date-fns'
 
 const SubscriptionList = ({ subscriptions, onEdit, onDelete }: SubscriptionListProps) => {
   if (subscriptions.length === 0) {
@@ -23,6 +24,9 @@ const SubscriptionList = ({ subscriptions, onEdit, onDelete }: SubscriptionListP
                 Price
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Due Date
+              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -38,6 +42,9 @@ const SubscriptionList = ({ subscriptions, onEdit, onDelete }: SubscriptionListP
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   ${sub.price.toFixed(2)}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {format(sub.dueDate, 'MMM dd, yyyy')}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${

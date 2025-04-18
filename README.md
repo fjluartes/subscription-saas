@@ -20,7 +20,7 @@
 - [ ] Payments CRUD
 
 # DONE 18 Apr 2025
-- [ ] Add Due Date for subscription
+- [x] Add Due Date for subscription
 - [ ] Manage Subscriptions (Pay/Cancel)
 - [ ] Active, Past Due, Cancelled status
 - [ ] Payments CRUD

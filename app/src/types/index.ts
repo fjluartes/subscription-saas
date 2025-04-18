@@ -4,6 +4,7 @@ export interface Subscription {
     name: string;
     price: number;
     isActive: boolean;
+    dueDate: Date;
     createdAt?: string;
   }
   

@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+// import { FaCheck, FaTimes } from 'react-icons/fa'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 import { SubscriptionFormProps } from '../types'
 
 const SubscriptionForm = ({ 
@@ -10,7 +13,8 @@ const SubscriptionForm = ({
   const [formData, setFormData] = useState({
     name: '',
     price: '',
-    isActive: true
+    isActive: true,
+    dueDate: new Date(),
   })
 
   useEffect(() => {
@@ -18,7 +22,8 @@ const SubscriptionForm = ({
       setFormData({
         name: editingSubscription.name,
         price: editingSubscription.price.toString(),
-        isActive: editingSubscription.isActive
+        isActive: editingSubscription.isActive,
+        dueDate: new Date(editingSubscription.dueDate),
       })
     }
   }, [editingSubscription])
@@ -31,12 +36,20 @@ const SubscriptionForm = ({
     }))
   }
 
+  const handleDateChange = (date: Date) => {
+    setFormData(prev => ({
+      ...prev,
+      dueDate: date,
+    }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const subscriptionData = {
       name: formData.name,
       price: parseFloat(formData.price),
-      isActive: formData.isActive
+      isActive: formData.isActive,
+      dueDate: formData.dueDate,
     }
 
     try {
@@ -49,7 +62,8 @@ const SubscriptionForm = ({
       setFormData({
         name: '',
         price: '',
-        isActive: true
+        isActive: true,
+        dueDate: new Date()
       })
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -83,6 +97,16 @@ const SubscriptionForm = ({
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             step="0.01"
             min="0"
+            required
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
+          <DatePicker 
+            selected={formData.dueDate}
+            onChange={handleDateChange}
+            minDate={new Date()}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>

@@ -24,7 +24,8 @@ export const createSubscription = async (req: Request, res: Response) => {
     userId: req.body.userId,
     name: req.body.name,
     price: req.body.price,
-    isActive: req.body.isActive
+    isActive: req.body.isActive,
+    dueDate: req.body.dueDate,
   })
 
   try {
@@ -42,7 +43,8 @@ export const updateSubscription = async (req: Request, res: Response) => {
       {
         name: req.body.name,
         price: req.body.price,
-        isActive: req.body.isActive
+        isActive: req.body.isActive,
+        dueDate: req.body.dueDate,
       },
       { new: true }
     )

@@ -5,6 +5,7 @@ export interface ISubscription extends Document {
     name: string,
     price: number,
     isActive: boolean,
+    dueDate: Date,
     createdAt?: Date,
 }
 
@@ -13,6 +14,7 @@ const subscriptionSchema = new mongoose.Schema({
     name: { type: String, required: true },
     price: { type: Number, required: true },
     isActive: { type: Boolean, default: true },
+    dueDate: { type: Date, required: true },
     createdAt: { type: Date, default: Date.now },
   });
 
