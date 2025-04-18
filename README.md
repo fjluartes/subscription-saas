@@ -8,9 +8,9 @@
 ## Features
 - [x] Landing Page
 - [x] Subscriptions Dashboard
-- [ ] Manage Subscriptions (Pay or Cancel)
-- [ ] Active, Past Due, Cancelled
 - [ ] Payment Due Date
+- [ ] Manage Subscriptions (Pay/Cancel)
+- [ ] Active, Past Due, Cancelled status
 - [ ] Payments (Stripe)
 
 ## TODO
@@ -21,7 +21,8 @@
 
 # DONE 18 Apr 2025
 - [ ] Add Due Date for subscription
-- [ ] Active/Past Due/Cancelled
+- [ ] Manage Subscriptions (Pay/Cancel)
+- [ ] Active, Past Due, Cancelled status
 - [ ] Payments CRUD
 
 # DONE 17 Apr 2025
