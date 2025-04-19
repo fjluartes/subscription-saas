@@ -19,11 +19,12 @@
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
 
-# DONE 18 Apr 2025
-- [x] Add Due Date for subscription
+# DONE 20 Apr 2025
 - [ ] Manage Subscriptions (Pay/Cancel)
 - [ ] Active, Past Due, Cancelled status
-- [ ] Payments CRUD
+
+# DONE 18 Apr 2025
+- [x] Add Due Date for subscription
 
 # DONE 17 Apr 2025
 - [x] Adds signout in navbar
