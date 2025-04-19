@@ -20,6 +20,7 @@
 - [ ] Payments CRUD
 
 # DONE 20 Apr 2025
+- [ ] Fix handleDateChange in SubscriptionForm
 - [ ] Manage Subscriptions (Pay/Cancel)
 - [ ] Active, Past Due, Cancelled status
 
