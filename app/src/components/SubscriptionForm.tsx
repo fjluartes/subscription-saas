@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-// import { FaCheck, FaTimes } from 'react-icons/fa'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { SubscriptionFormProps } from '../types'
 
 const SubscriptionForm = ({ 
   onAdd, 
-  onUpdate, 
+  onUpdate,
   editingSubscription, 
-  setEditingSubscription 
+  setEditingSubscription,
+  handleCloseModal,
 }: SubscriptionFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -133,7 +133,10 @@ const SubscriptionForm = ({
           {editingSubscription && (
             <button
               type="button"
-              onClick={() => setEditingSubscription(null)}
+              onClick={() => {
+                setEditingSubscription(null)
+                handleCloseModal()
+              }}
               className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
             >
               Cancel

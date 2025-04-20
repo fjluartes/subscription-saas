@@ -13,6 +13,7 @@ export interface Subscription {
     onUpdate: (id: string, updatedData: Partial<Subscription>) => Promise<void>;
     editingSubscription: Subscription | null;
     setEditingSubscription: (subscription: Subscription | null) => void;
+    handleCloseModal: () => void;
   }
   
   export interface SubscriptionListProps {

@@ -14,14 +14,14 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Show Payment Due Date
+- [ ] Past Due date
 - [ ] Add Active, Past Due, Cancelled status
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
 
 # DONE 20 Apr 2025
 - [x] Fix handleDateChange in SubscriptionForm
-- [ ] Manage Subscriptions (Pay/Cancel)
+- [x] Close Modal on Edit Subscription
 - [ ] Active, Past Due, Cancelled status
 
 # DONE 18 Apr 2025

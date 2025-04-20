@@ -147,6 +147,7 @@ const Dashboard = () => {
                 }}
                 editingSubscription={editingSubscription}
                 setEditingSubscription={setEditingSubscription}
+                handleCloseModal={handleCloseModal}
               />
             </div>
           </div>
