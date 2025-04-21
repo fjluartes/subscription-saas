@@ -19,10 +19,13 @@
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
 
+# DONE 21 Apr 2025
+- [ ] Active, Past Due, Cancelled status
+- [ ] Manage Subscription
+
 # DONE 20 Apr 2025
 - [x] Fix handleDateChange in SubscriptionForm
 - [x] Close Modal on Edit Subscription
-- [ ] Active, Past Due, Cancelled status
 
 # DONE 18 Apr 2025
 - [x] Add Due Date for subscription
