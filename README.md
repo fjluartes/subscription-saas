@@ -20,7 +20,7 @@
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
 
-# DONE 21 Apr 2025
+# DONE 22 Apr 2025
 - [ ] Active, Past Due, Cancelled status
 - [ ] Manage Subscription
 
