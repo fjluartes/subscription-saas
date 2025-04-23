@@ -20,7 +20,7 @@
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
 
-# DONE 22 Apr 2025
+# DONE 23 Apr 2025
 - [ ] Active, Past Due, Cancelled status
 - [ ] Manage Subscription
 
@@ -69,4 +69,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 1 month (until 30 Apr)
+- 1 month (until 3 May)
