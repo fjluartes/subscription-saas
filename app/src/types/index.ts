@@ -1,9 +1,17 @@
+export enum SubscriptionStatus {
+  ACTIVE = 'active',
+  CANCELLED = 'cancelled',
+  PAUSED = 'paused',
+  EXPIRED = 'expired'
+}
+
 export interface Subscription {
     _id: string;
     userId: string;
     name: string;
     price: number;
-    isActive: boolean;
+    // isActive: boolean;
+    status: SubscriptionStatus;
     dueDate: Date;
     createdAt?: string;
   }
