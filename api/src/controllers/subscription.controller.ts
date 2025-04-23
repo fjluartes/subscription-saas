@@ -4,6 +4,12 @@ import { Subscription } from '../models/subscription.model'
 export const getSubscriptions = async (req: Request, res: Response) => {
   try {
     const subscriptions = await Subscription.find({ userId: req.params.userId })
+    // subscriptions.forEach(sub => {
+    //   let today = new Date();
+    //   if (sub.dueDate < today) {
+    //     sub.status = "Past Due"
+    //   }
+    // })
     res.json(subscriptions)
   } catch (err: any) {
     res.status(500).json({ message: err.message })
