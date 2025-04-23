@@ -15,15 +15,17 @@
 
 ## TODO
 - [ ] Past Due date
-- [ ] Add Active, Past Due, Cancelled status
+- [ ] Add Status (Active, Cancelled, Paused, Expired)
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
 
+# DONE 24 Apr 2025
+- [ ] Continue SubscriptionStatus changes
+
 # DONE 23 Apr 2025
 - [x] Test Auth (localStorage)
-- [ ] Past Due status
-- [ ] Cancel Subscription
+- [x] SubscriptionStatus
 
 # DONE 20 Apr 2025
 - [x] Fix handleDateChange in SubscriptionForm
