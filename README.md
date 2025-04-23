@@ -21,8 +21,9 @@
 - [ ] Test Auth, endpoints
 
 # DONE 23 Apr 2025
-- [ ] Test Auth (localStorage)
-- [ ] Active, Past Due, Cancelled status
+- [x] Test Auth (localStorage)
+- [ ] Past Due status
+- [ ] Cancel Subscription
 
 # DONE 20 Apr 2025
 - [x] Fix handleDateChange in SubscriptionForm
