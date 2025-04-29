@@ -20,7 +20,7 @@
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
 
-# DONE 24 Apr 2025
+# DONE 1 May 2025
 - [ ] Continue SubscriptionStatus changes
 
 # DONE 23 Apr 2025
