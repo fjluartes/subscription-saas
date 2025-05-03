@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { SubscriptionFormProps } from '../types'
+import { SubscriptionFormProps, SubscriptionStatus } from '../types'
+
+const statusOptions = [
+  { value: SubscriptionStatus.ACTIVE, label: 'Active'},
+  { value: SubscriptionStatus.PAUSED, label: 'Paused'},
+  { value: SubscriptionStatus.CANCELLED, label: 'Cancelled'},
+  { value: SubscriptionStatus.EXPIRED, label: 'Expired'},
+]
 
 const SubscriptionForm = ({ 
   onAdd, 
@@ -13,7 +20,7 @@ const SubscriptionForm = ({
   const [formData, setFormData] = useState({
     name: '',
     price: '',
-    isActive: true,
+    status: SubscriptionStatus.ACTIVE,
     dueDate: new Date(),
   })
 
@@ -22,17 +29,17 @@ const SubscriptionForm = ({
       setFormData({
         name: editingSubscription.name,
         price: editingSubscription.price.toString(),
-        isActive: editingSubscription.isActive,
+        status: editingSubscription.status,
         dueDate: new Date(editingSubscription.dueDate),
       })
     }
   }, [editingSubscription])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }))
   }
 
@@ -48,7 +55,7 @@ const SubscriptionForm = ({
     const subscriptionData = {
       name: formData.name,
       price: parseFloat(formData.price),
-      isActive: formData.isActive,
+      status: formData.status,
       dueDate: formData.dueDate,
     }
 
@@ -62,7 +69,7 @@ const SubscriptionForm = ({
       setFormData({
         name: '',
         price: '',
-        isActive: true,
+        status: SubscriptionStatus.ACTIVE,
         dueDate: new Date()
       })
     } catch (error) {
@@ -101,6 +108,21 @@ const SubscriptionForm = ({
           />
         </div>
         <div>
+          <label className="block text-sm font-medium mb-1">Status</label>
+          <select
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            className="w-full p-2 border rounded"
+          >
+            {statusOptions.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
           <DatePicker 
             selected={formData.dueDate}
@@ -109,19 +131,6 @@ const SubscriptionForm = ({
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-        </div>
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            name="isActive"
-            checked={formData.isActive}
-            onChange={handleChange}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-            id="isActive"
-          />
-          <label htmlFor="isActive" className="ml-2 block text-sm text-gray-700">
-            Active Subscription
-          </label>
         </div>
         <div className="flex space-x-3">
           <button

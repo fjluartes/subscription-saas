@@ -21,7 +21,8 @@
 - [ ] Test Auth, endpoints
 
 # DONE 3 May 2025
-- [ ] Continue SubscriptionStatus changes
+- [x] Adds SubscriptionStatus in SubscriptionList
+- [ ] Add Subscription with status
 
 # DONE 23 Apr 2025
 - [x] Test Auth (localStorage)

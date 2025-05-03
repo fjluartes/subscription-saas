@@ -10,7 +10,6 @@ export interface Subscription {
     userId: string;
     name: string;
     price: number;
-    // isActive: boolean;
     status: SubscriptionStatus;
     dueDate: Date;
     createdAt?: string;

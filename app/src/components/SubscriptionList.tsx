@@ -1,5 +1,20 @@
-import { SubscriptionListProps } from '../types'
+import { SubscriptionListProps, SubscriptionStatus } from '../types'
 import { format } from 'date-fns'
+
+const getStatusColor = (status: SubscriptionStatus) => {
+  switch (status) {
+    case SubscriptionStatus.ACTIVE:
+      return 'bg-green-100 text-green-800'
+    case SubscriptionStatus.PAUSED:
+      return 'bg-yellow-100 text-yellow-800'
+    case SubscriptionStatus.CANCELLED:
+      return 'bg-red-100 text-red-800'
+    case SubscriptionStatus.EXPIRED:
+      return 'bg-gray-100 text-gray-800'
+    default:
+      return 'bg-blue-100 text-blue-800'
+  }
+}
 
 const SubscriptionList = ({ subscriptions, onEdit, onDelete }: SubscriptionListProps) => {
   if (subscriptions.length === 0) {
@@ -46,13 +61,9 @@ const SubscriptionList = ({ subscriptions, onEdit, onDelete }: SubscriptionListP
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {format(sub.dueDate, 'MMM dd, yyyy')}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                    sub.isActive 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
-                    {sub.isActive ? 'Active' : 'Cancelled'}
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className={`px-2 py-1 rounded-full text-xs ${getStatusColor(sub.status)}`}>
+                    {sub.status.charAt(0).toUpperCase() + sub.status.slice(1)}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
