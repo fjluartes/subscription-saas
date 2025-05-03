@@ -8,14 +8,14 @@
 ## Features
 - [x] Landing Page
 - [x] Subscriptions Dashboard
-- [ ] Payment Due Date
+- [x] Payment Due Date
 - [ ] Manage Subscriptions (Pay/Cancel)
 - [ ] Active, Past Due, Cancelled status
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Due Date
 - [ ] Subscription Status (Active, Cancelled, Paused, Expired)
+- [ ] Update status for past due (Paused)
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
