@@ -20,9 +20,11 @@
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
 
+# DONE 4 May 2025
+- [ ] Add Subscription with status
+
 # DONE 3 May 2025
 - [x] Adds SubscriptionStatus in SubscriptionList
-- [ ] Add Subscription with status
 
 # DONE 23 Apr 2025
 - [x] Test Auth (localStorage)
