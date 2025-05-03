@@ -14,8 +14,8 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Past Due date
-- [ ] Add Status (Active, Cancelled, Paused, Expired)
+- [ ] Due Date
+- [ ] Subscription Status (Active, Cancelled, Paused, Expired)
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
