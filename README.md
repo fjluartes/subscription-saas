@@ -20,7 +20,7 @@
 - [ ] Payments CRUD
 - [ ] Test Auth, endpoints
 
-# DONE 4 May 2025
+# DONE 7 May 2025
 - [ ] Add Subscription with status
 
 # DONE 3 May 2025
@@ -75,4 +75,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 1 month (until 3 May)
+- 1 month (until 17 May)
