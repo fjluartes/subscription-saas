@@ -1,102 +1,117 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { FaUser, FaEnvelope, FaSave, FaTimes, FaLock, FaEdit, FaTrash } from 'react-icons/fa'
-import Navbar from '../components/Navbar'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import {
+  FaUser,
+  FaEnvelope,
+  FaSave,
+  FaTimes,
+  FaLock,
+  FaEdit,
+  FaTrash,
+  FaEyeSlash,
+  FaEye,
+} from "react-icons/fa";
+import Navbar from "../components/Navbar";
 
 interface UserData {
-  _id: string
-  name: string
-  email: string
-  createdAt: string
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
 }
 
 const Profile = () => {
-  const [user, setUser] = useState<UserData | null>(null)
-  const [editMode, setEditMode] = useState(false)
+  const [user, setUser] = useState<UserData | null>(null);
+  const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: ''
-  })
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+    name: "",
+    email: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const userDetails = JSON.parse(localStorage.getItem("user") || "");
   const userEmail = userDetails.email;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
   // Fetch user data on component mount
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const token = localStorage.getItem('token')
+        const token = sessionStorage.getItem("token");
         if (!token) {
-          navigate('/login')
-          return
+          navigate("/login");
+          return;
         }
 
-        const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/users/profile`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL_DEV}/users/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
 
-        setUser(response.data)
+        setUser(response.data);
         setFormData({
           name: response.data.name,
           email: response.data.email,
-          currentPassword: '',
-          newPassword: '',
-          confirmPassword: ''
-        })
+          currentPassword: "",
+          newPassword: "",
+          confirmPassword: "",
+        });
       } catch (err) {
-        console.error('Error fetching profile:', err)
-        navigate('/login')
+        console.error("Error fetching profile:", err);
+        navigate("/login");
       }
-    }
+    };
 
-    fetchUserProfile()
-  }, [navigate])
+    fetchUserProfile();
+  }, [navigate]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setSuccess('')
-    setIsLoading(true)
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+    setIsLoading(true);
 
     try {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
       if (!token) {
-        navigate('/login')
-        return
+        navigate("/login");
+        return;
       }
 
       // Prepare update data (only include password fields if they're provided)
       const updateData: any = {
         name: formData.name,
-        email: formData.email
-      }
+        email: formData.email,
+      };
 
       if (formData.newPassword) {
         if (formData.newPassword !== formData.confirmPassword) {
-          throw new Error('New passwords do not match')
+          throw new Error("New passwords do not match");
         }
         if (!formData.currentPassword) {
-          throw new Error('Current password is required to change password')
+          throw new Error("Current password is required to change password");
         }
-        updateData.currentPassword = formData.currentPassword
-        updateData.newPassword = formData.newPassword
+        updateData.currentPassword = formData.currentPassword;
+        updateData.newPassword = formData.newPassword;
       }
 
       const response = await axios.put(
@@ -104,60 +119,67 @@ const Profile = () => {
         updateData,
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      )
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
-      setUser(response.data)
-      setSuccess('Profile updated successfully!')
-      setEditMode(false)
+      setUser(response.data);
+      setSuccess("Profile updated successfully!");
+      setEditMode(false);
       // Update local storage if email or name changed
       localStorage.setItem(
-        'user',
+        "user",
         JSON.stringify({
           name: response.data.name,
-          email: response.data.email
-        })
-      )
+          email: response.data.email,
+        }),
+      );
     } catch (err: any) {
       setError(
         err.response?.data?.message ||
-        err.message ||
-        'Error updating profile. Please try again.'
-      )
+          err.message ||
+          "Error updating profile. Please try again.",
+      );
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleDeleteAccount = async () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+    if (
+      window.confirm(
+        "Are you sure you want to delete your account? This action cannot be undone.",
+      )
+    ) {
       try {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem("token");
         if (!token) {
-          navigate('/login')
-          return
+          navigate("/login");
+          return;
         }
 
-        await axios.delete(`${import.meta.env.VITE_API_URL_DEV}/users/profile`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
+        await axios.delete(
+          `${import.meta.env.VITE_API_URL_DEV}/users/profile`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
 
         // Clear local storage and redirect to login
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
-        navigate('/login')
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/login");
       } catch (err: any) {
         setError(
           err.response?.data?.message ||
-          'Error deleting account. Please try again.'
-        )
+            "Error deleting account. Please try again.",
+        );
       }
     }
-  }
+  };
 
   if (!user) {
     return (
@@ -167,7 +189,7 @@ const Profile = () => {
           <p className="mt-4 text-gray-600">Loading profile...</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -213,7 +235,10 @@ const Profile = () => {
               <form onSubmit={handleSubmit}>
                 <div className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       <FaUser className="inline mr-2 text-gray-500" />
                       Full Name
                     </label>
@@ -229,7 +254,10 @@ const Profile = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       <FaEnvelope className="inline mr-2 text-gray-500" />
                       Email Address
                     </label>
@@ -250,53 +278,92 @@ const Profile = () => {
                       Change Password
                     </h3>
                     <p className="text-sm text-gray-500 mb-4">
-                      Leave these fields blank if you don't want to change your password.
+                      Leave these fields blank if you don't want to change your
+                      password.
                     </p>
 
                     <div className="space-y-4">
                       <div>
-                        <label htmlFor="currentPassword" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="currentPassword"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Current Password
                         </label>
-                        <input
-                          type="password"
-                          id="currentPassword"
-                          name="currentPassword"
-                          value={formData.currentPassword}
-                          onChange={handleChange}
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                          placeholder="Enter current password"
-                        />
+                        <div className="relative">
+                          <input
+                            type={showCurrentPassword ? "text" : "password"}
+                            id="currentPassword"
+                            name="currentPassword"
+                            value={formData.currentPassword}
+                            onChange={handleChange}
+                            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 pr-10 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Enter current password"
+                          />
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setShowCurrentPassword(!showCurrentPassword)
+                            }
+                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+                          >
+                            {showCurrentPassword ? <FaEye /> : <FaEyeSlash />}
+                          </button>
+                        </div>
                       </div>
 
                       <div>
-                        <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="newPassword"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           New Password
                         </label>
-                        <input
-                          type="password"
-                          id="newPassword"
-                          name="newPassword"
-                          value={formData.newPassword}
-                          onChange={handleChange}
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                          placeholder="Enter new password"
-                        />
+                        <div className="relative">
+                          <input
+                            type={showNewPassword ? "text" : "password"}
+                            id="newPassword"
+                            name="newPassword"
+                            value={formData.newPassword}
+                            onChange={handleChange}
+                            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 pr-10 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Enter new password"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowNewPassword(!showNewPassword)}
+                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+                          >
+                            {showNewPassword ? <FaEye /> : <FaEyeSlash />}
+                          </button>
+                        </div>
                       </div>
 
                       <div>
-                        <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+                        <label
+                          htmlFor="confirmPassword"
+                          className="block text-sm font-medium text-gray-700"
+                        >
                           Confirm New Password
                         </label>
-                        <input
-                          type="password"
-                          id="confirmPassword"
-                          name="confirmPassword"
-                          value={formData.confirmPassword}
-                          onChange={handleChange}
-                          className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                          placeholder="Confirm new password"
-                        />
+                        <div className="relative">
+                          <input
+                            type={showNewPassword ? "text" : "password"}
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            placeholder="Confirm new password"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShowNewPassword(!showNewPassword)}
+                            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+                          >
+                            {showNewPassword ? <FaEye /> : <FaEyeSlash />}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -305,9 +372,9 @@ const Profile = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        setEditMode(false)
-                        setError('')
-                        setSuccess('')
+                        setEditMode(false);
+                        setError("");
+                        setSuccess("");
                       }}
                       className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       disabled={isLoading}
@@ -321,9 +388,25 @@ const Profile = () => {
                     >
                       {isLoading ? (
                         <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Saving...
                         </>
@@ -368,7 +451,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
