@@ -8,22 +8,34 @@
 ## Features
 - [x] Landing Page
 - [x] Subscriptions Dashboard
-- [ ] Payment Due Date
+- [x] Payment Due Date
 - [ ] Manage Subscriptions (Pay/Cancel)
 - [ ] Active, Past Due, Cancelled status
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Show Payment Due Date
-- [ ] Add Active, Past Due, Cancelled status
+- [ ] Subscription Status (Active, Cancelled, Paused, Expired)
+- [ ] Update status for past due (Paused)
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
+- [ ] Test Auth, endpoints
+
+# DONE 9 May 2025
+- [ ] Add Subscription with status
+
+# DONE 3 May 2025
+- [x] Adds SubscriptionStatus in SubscriptionList
+
+# DONE 23 Apr 2025
+- [x] Test Auth (localStorage)
+- [x] SubscriptionStatus
+
+# DONE 20 Apr 2025
+- [x] Fix handleDateChange in SubscriptionForm
+- [x] Close Modal on Edit Subscription
 
 # DONE 18 Apr 2025
 - [x] Add Due Date for subscription
-- [ ] Manage Subscriptions (Pay/Cancel)
-- [ ] Active, Past Due, Cancelled status
-- [ ] Payments CRUD
 
 # DONE 17 Apr 2025
 - [x] Adds signout in navbar
@@ -63,4 +75,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 1 month (until 30 Apr)
+- 1 month (until 17 May)

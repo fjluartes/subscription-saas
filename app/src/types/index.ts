@@ -1,9 +1,16 @@
+export enum SubscriptionStatus {
+  ACTIVE = 'active',
+  CANCELLED = 'cancelled',
+  PAUSED = 'paused',
+  EXPIRED = 'expired'
+}
+
 export interface Subscription {
     _id: string;
     userId: string;
     name: string;
     price: number;
-    isActive: boolean;
+    status: SubscriptionStatus;
     dueDate: Date;
     createdAt?: string;
   }
@@ -13,6 +20,7 @@ export interface Subscription {
     onUpdate: (id: string, updatedData: Partial<Subscription>) => Promise<void>;
     editingSubscription: Subscription | null;
     setEditingSubscription: (subscription: Subscription | null) => void;
+    handleCloseModal: () => void;
   }
   
   export interface SubscriptionListProps {
