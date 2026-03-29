@@ -14,17 +14,17 @@
 - [ ] Payments (Stripe)
 
 ## TODO
-- [ ] Fix subscription date setting
-- [ ] Add 
-- [ ] Subscription Status (Active, Cancelled, Paused, Expired)
-- [ ] Update status for past due (Paused)
+- [ ] Subscription Status (Active, Cancelled, Expired, Due Payment)
+- [ ] Update status for past due (Expired)
 - [ ] Manage Subscription (Pay/Cancel)
 - [ ] Payments CRUD
-- [ ] Test Auth, endpoints
+- [ ] Test app happy path
+- [ ] Test api endpoints happy path
 
-# DONE 28 Mar 2026
-- [ ] Fix payment due date, calendar
-- [ ] Add subscription status change for due date
+# DONE 29 Mar 2026
+- [x] Fix payment due date
+- [ ] Add Due Payment status
+- [ ] Subscription status change for current date >= due date
 
 # DONE 27 Mar 2026
 - [x] Fix sessionStorage get token in Profile
@@ -86,4 +86,4 @@
 - [x] Fix styling of Login, Dashboard
 
 ## Time Limit
-- 3 weeks (until 18 Apr)
+- 3 weeks (until 14 Apr)
